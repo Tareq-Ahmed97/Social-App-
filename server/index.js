@@ -7,12 +7,11 @@ import postRoutes from "./routes/posts.js";
 
 const app = express();
 
-app.use("/posts", postRoutes);
-app.use("/", (req, res) => res.send("Home Page"));
-
 app.use(bodyParser.json({ limit: "30 mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30 mb", extended: true }));
 app.use(cors());
+app.use("/posts", postRoutes);
+app.use("/", (req, res) => res.send("Home Page"));
 
 const CONNECTION_URL =
   "mongodb+srv://tareq9725:peterparker9725@socialapp.4oyc69f.mongodb.net/?retryWrites=true&w=majority";
